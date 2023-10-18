@@ -47,11 +47,3 @@ func testuUniqness(t *testing.T, genFunc func() string) {
 func TestUUID(t *testing.T) {
 	testuUniqness(t, watermill.NewUUID)
 }
-
-func TestShortUUID(t *testing.T) {
-	testuUniqness(t, watermill.NewShortUUID)
-}
-
-func TestULID(t *testing.T) {
-	testuUniqness(t, watermill.NewULID)
-}

@@ -192,7 +192,7 @@ func generateTempSubscription() (id string, err error) {
 		}
 	}()
 
-	randomID := "watermill_console_consumer_" + watermill.NewShortUUID()
+	randomID := "watermill_console_consumer_" + watermill.NewUUID()
 	return randomID, addSubscription(
 		randomID,
 		viper.GetString("googlecloud.topic"),

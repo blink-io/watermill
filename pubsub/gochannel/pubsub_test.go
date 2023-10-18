@@ -158,7 +158,7 @@ func TestPublish_race_condition_when_closing(t *testing.T) {
 				watermill.NewStdLogger(true, false),
 			)
 			go func() {
-				_ = pubSub.Publish("topic", message.NewMessage(watermill.NewShortUUID(), nil))
+				_ = pubSub.Publish("topic", message.NewMessage(watermill.NewUUID(), nil))
 			}()
 
 			err := pubSub.Close()
