@@ -3,10 +3,9 @@ package watermill
 import (
 	"bytes"
 	"errors"
+	"log/slog"
 	"strings"
 	"testing"
-
-	"log/slog"
 
 	"github.com/stretchr/testify/assert"
 )
