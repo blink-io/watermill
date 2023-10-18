@@ -4,14 +4,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stretchr/testify/assert"
-
 	"github.com/ThreeDotsLabs/watermill"
 	"github.com/ThreeDotsLabs/watermill/internal/publisher"
-	"github.com/stretchr/testify/require"
-
 	"github.com/ThreeDotsLabs/watermill/message"
 	"github.com/pkg/errors"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 var errCouldNotPublish = errors.New("could not publish, try again")
@@ -101,7 +99,8 @@ func TestRetryPublisher_Publish_too_many_retries(t *testing.T) {
 	// then
 	require.Error(t, err)
 
-	cnpErr, ok := err.(*publisher.ErrCouldNotPublish)
+	var cnpErr *publisher.ErrCouldNotPublish
+	ok := errors.As(err, &cnpErr)
 	require.True(t, ok, "expected the ErrCouldNotPublish composite error type")
 
 	assert.Equal(t, 1, cnpErr.Len(), "attempted to publish one message, expecting one error")
